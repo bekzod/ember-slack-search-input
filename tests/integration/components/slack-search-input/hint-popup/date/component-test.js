@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{tag-search-input/hint-popup/date}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#tag-search-input/hint-popup/date}}
-      template block text
-    {{/tag-search-input/hint-popup/date}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

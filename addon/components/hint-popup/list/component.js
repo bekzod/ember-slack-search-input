@@ -1,4 +1,3 @@
-/*global moment*/
 import Ember from 'ember';
 import layout from './template';
 

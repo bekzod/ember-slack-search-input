@@ -1,6 +1,5 @@
-/*global moment*/
 import Ember from 'ember';
-import { getMatch } from './../../util';
+import { getMatch } from '../../../util';
 
 const { get } = Ember;
 

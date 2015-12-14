@@ -16,9 +16,6 @@
   },
   "resolutions": {
     "ember": "2.2.0",
-    "jquery": "2.1.4",
-    "ember-cli-test-loader": "~0.2.2",
-    "ember-qunit": "~0.4.17",
-    "loader.js": "~3.5.0"
+    "jquery": "2.1.4"
   }
 }

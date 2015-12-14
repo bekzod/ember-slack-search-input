@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import DateSource from './hint-popup/date/adapter';
-import ListSource from './hint-popup/list/adapter';
-import DefaultSource from './hint-popup/default/adapter';
+import DateSource from './components/hint-popup/date/adapter';
+import ListSource from './components/hint-popup/list/adapter';
+import DefaultSource from './components/hint-popup/default/adapter';
 
 const { computed, get, set } = Ember;
 

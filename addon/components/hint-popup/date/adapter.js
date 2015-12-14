@@ -1,5 +1,5 @@
 /*global moment*/
-import { getMatch } from './../../util';
+import { getMatch } from '../../../util';
 
 const MONTHS = moment.months().invoke('toLowerCase');
 const ALLOWED_VALUES = ['yesterday', 'today'].concat(MONTHS);

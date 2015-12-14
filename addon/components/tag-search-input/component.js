@@ -1,106 +1,9 @@
 import Ember from 'ember';
-import Token from './token';
+import Token from '../../token';
 import layout from './template';
-import { setCursor, KEYS } from './util';
+import { setCursor, KEYS, tokenize, prepareConig, sanitizeToken } from '../../util';
 
-const { set, on, run, getProperties, computed, get } = Ember;
-
-function sanitizeTokens(tokens) {
-  return tokens.reduce(function(sum, token) {
-    let t = sanitizeToken(token);
-    if (t) {
-      if (sum[t.modifier]) {
-        sum[t.modifier].push(t);
-      } else {
-        sum[t.modifier] = [t];
-      }
-    }
-    return sum;
-  }, Object.create(null));
-}
-
-function sanitizeToken(token) {
-  let type = get(token, 'type');
-  if (type !== 'space' && type !== 'default') {
-    return getProperties(token, 'model', 'fullText', 'modifier', 'value');
-  }
-  return null;
-}
-
-function getDefaultContent(configHash, modifiersList) {
-  let key, val, list;
-  let allList = [];
-
-  for (key in configHash) {
-    val = configHash[key];
-    if (val.type === 'list' && val.content) {
-      list = val.content.map(function(item) {
-        return {
-          label: item.label,
-          value: key + item.value,
-          fullText: true,
-          section: val.sectionTitle
-        };
-      });
-      allList = allList.concat(list);
-    }
-  }
-  var modifiers = modifiersList.map(function(item) {
-    item.section = 'modifiers';
-    return item;
-  });
-  return allList.concat(modifiers);
-}
-
-function getAllModifiers(configHash) {
-  let modifiers = [];
-  for (let key in configHash) {
-    let config = configHash[key];
-    let section = config.type === 'date' ? 'time' : 'others';
-    modifiers.push({
-      value: key,
-      label: config.defaultHint,
-      modifier: true,
-      section
-    });
-  }
-  return modifiers;
-}
-
-function tokenize(text, configHash) {
-  let tokens = [];
-  let mem = '';
-  let i = 0;
-
-  for (i = 0; i <= text.length; i++) {
-    var character = text[i];
-    if ((character === ' ' || !character)) {
-      if (mem) {
-        tokens.push(Token.create({ configHash, fullText: mem }));
-      }
-      if (character) {
-        tokens.push(Token.create({ configHash, fullText: ' ' }));
-      }
-      mem = '';
-    } else if (character !== ' ') {
-      mem += character;
-    }
-  }
-  return tokens;
-}
-
-function prepareConig(configHash) {
-  let modifiers = getAllModifiers(configHash);
-  configHash['+'] = { type: 'modifier-list', content: modifiers };
-  configHash['_default'] = {
-    type: 'default', content: getDefaultContent(configHash, modifiers)
-  };
-  return configHash;
-}
-
-export function deserializeQueryString(string, configHash) {
-  return sanitizeTokens(tokenize(string, configHash));
-}
+const { set, on, run, computed, get } = Ember;
 
 export default Ember.Component.extend({
   layout: layout,
@@ -141,7 +44,7 @@ export default Ember.Component.extend({
     let type = get(this, 'currentToken.type');
     set(this, 'isPopupFocused', false);
     if (type && (type !== 'space')) {
-      return 'tag-search-input.hint-popup.' + (type === 'modifier-list' ? 'list' : type);
+      return 'hint-popup/' + (type === 'modifier-list' ? 'list' : type);
     }
   }),
 
