@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 input-container">
+      {{#tag-search-input configHash=searchConfig as |concatToInputValue|}}
+        <div class="help-title">
+          Search with Filters
+        </div>
+        <span class='help-text'>Narrow your search using filter <span onmousedown={{action concatToInputValue 'before:'}} class='modifier'>before:</span>, <span onmousedown={{action concatToInputValue 'channel:'}} class='modifier'>channel:</span> or <span onmousedown={{action concatToInputValue '@'}} class='modifier'>@</span>. Or press plus key <span onmousedown={{action concatToInputValue '+'}} class='modifier'>+</span> to get all available filters</span>
+      {{/tag-search-input}}
+    </div>
+  </div>
+</div>

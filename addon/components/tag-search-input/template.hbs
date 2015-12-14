@@ -1,0 +1,36 @@
+{{input
+  autocomplete="off"
+  spellcheck=false
+  class='main-input'
+  value=(readonly proxyValue)
+  maxlength=250
+  click=(action 'onClick')
+  paste=(action 'inputPaste')
+  cut=(action 'inputCut')
+  focus-out=(action 'onFocusOut')
+  focus-in=(action 'onFocusIn')
+  key-down=(action 'onKeyDown') }}
+
+<div class="background-container">{{#each tokens as |token|}}{{#if (not (array-contains tokenTypes token.type))}}{{#if token.isValueValid}}<span class='modifier'>{{token.modifier}}{{token.value}}</span>{{else}}<span class='modifier incomplete'>{{token.modifier}}</span>{{token.value}}{{/if}}{{else}}{{token.fullText}}{{/if}}{{/each}}<span class="hint-value">{{hintValue}}</span></div>
+
+{{#unless isPopupHidden}}
+  {{#if popupComponent}}
+    {{component popupComponent
+      token=currentToken
+      cursor=currentTokenCursor
+      changeTokenModel=(action 'changeTokenModel')
+      on-focus=(action (mut isPopupFocused) true)
+      enterClicked=enterClicked
+      upClicked=upClicked
+      downClicked=downClicked
+    }}
+  {{else if (and showHelp hasBlock)}}
+    <div class="hint-menu-container">
+      <span class="arrow"></span>
+      <span class="arrow-border"></span>
+      <div class="hint-menu with-help">
+        {{yield (action 'concatToInputValue')}}
+      </div>
+    </div>
+  {{/if}}
+{{/unless}}

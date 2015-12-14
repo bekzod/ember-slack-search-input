@@ -1,0 +1,23 @@
+<span class="arrow"></span>
+<span class="arrow-border"></span>
+<div class="hint-menu">
+{{#each listGrouped as |listItem index|}}
+  {{#if (or listItem.section token.sectionTitle)}}
+    <div class="section-header">
+      <hr>
+      <span class="header-label">{{or listItem.section token.sectionTitle}}</span>
+    </div>
+  {{/if}}
+  <ul class='tag-search-input-list'>
+    {{#each listItem.list as |item|}}
+      <li onmousedown={{action 'selectItem' item.index}} class='{{if (eq item.index currentIndex) "current"}}'>
+        {{#if (eq item.label item.value)}}
+          <span class='modifier-value'>{{token.key}}</span><b>{{item.value}}</b>
+        {{else}}
+          <b>{{item.label}}</b> <span class='modifier-value'>{{item.value}}</span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+{{/each}}
+</div>
