@@ -1,1 +1,1 @@
-export { default } from 'ember-tag-search-input/components/tag-search-input/component';
+export { default } from 'ember-slack-search-input/components/slack-search-input/component';

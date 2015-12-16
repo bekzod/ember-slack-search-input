@@ -3,12 +3,12 @@
 var path = require('path');
 
 module.exports = {
-  name: 'ember-tag-search-input',
+  name: 'ember-slack-search-input',
   included: function(app) {
     this._super.included(app);
 
     var bowerDir = app.bowerDirectory;
-    var options = app.options['ember-tag-search-input'] || {};
+    var options = app.options['ember-slack-search-input'] || {};
     var bootstrapPath = path.join(bowerDir,'/bootstrap/dist/');
 
     if (options.importBootstrapCSS) {

@@ -49,6 +49,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoUrl": "ember-tag-search-input.surge.sh"
+    "demoUrl": "ember-slack-search-input.surge.sh"
   }
 }

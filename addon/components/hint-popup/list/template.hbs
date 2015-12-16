@@ -8,7 +8,7 @@
       <span class="header-label">{{or listItem.section token.sectionTitle}}</span>
     </div>
   {{/if}}
-  <ul class='tag-search-input-list'>
+  <ul class='slack-search-input-list'>
     {{#each listItem.list as |item|}}
       <li onmousedown={{action 'selectItem' item.index}} class='{{if (eq item.index currentIndex) "current"}}'>
         {{#if (eq item.label item.value)}}

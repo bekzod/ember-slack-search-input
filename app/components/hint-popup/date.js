@@ -1,1 +1,1 @@
-export { default } from 'ember-tag-search-input/components/hint-popup/date/component';
+export { default } from 'ember-slack-search-input/components/hint-popup/date/component';

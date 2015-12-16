@@ -7,7 +7,7 @@ const { set, on, run, computed, get } = Ember;
 
 export default Ember.Component.extend({
   layout: layout,
-  classNames: ['tag-search-input'],
+  classNames: ['slack-search-input'],
   cursorLocation: -1,
   // used to pass event to child components
   enterClicked: false,
