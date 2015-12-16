@@ -27,8 +27,8 @@ Like search input field in slack, special keywords(modifiers) are used to filter
 {{slack-search-input
   placeholder='search for objects'
   configHash=configHash
-  inputValue=model.queryString 
-  isPopupHidden=isSearchPopupHidden
+  inputValue='' 
+  isPopupHidden=false
   valueChange=(action 'searchValueChange')
   modefierAutoComplete=(action 'modefierAutoComplete')
   enter=(action 'search')
