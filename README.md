@@ -109,13 +109,13 @@ You can install either with `ember install`:
 For Ember CLI >= `0.2.3`:
 
 ```shell
-ember install ember-cli-flash
+ember install ember-slack-search-input
 ```
 
 For Ember CLI < `0.2.3`:
 
 ```shell
-ember install:addon ember-cli-flash
+ember install:addon ember-slack-search-input
 ```
 
 ## TODO
