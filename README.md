@@ -49,22 +49,22 @@ There is also help popup which is displayed when user focuses input first time. 
 
 ## tag-search-input options
 
-### placeholder
+#### placeholder
 Simple placeholder displayed when input has no value
 
-### configHash
+#### configHash
 Config object used for getting modifiers
 
-### inputValue
+#### inputValue
 Initial value of input 
 
-### isPopupHidden
+#### isPopupHidden
 can be used to hide popups 
 
-### valueChange(newValue)
+#### valueChange(newValue)
 fired when inputValue changes 
 
-###modefierAutoComplete(newValue, modifierValue)
+####modefierAutoComplete(newValue, modifierValue)
 fired when modifier has valid value
 
 ## Modifier Types
