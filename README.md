@@ -103,6 +103,21 @@ Currently addon styles rely on `bootstrap 3.x.x`, if you don't have it installed
   });
 ```
 
+## Installation
+You can install either with `ember install`:
+
+For Ember CLI >= `0.2.3`:
+
+```shell
+ember install ember-cli-flash
+```
+
+For Ember CLI < `0.2.3`:
+
+```shell
+ember install:addon ember-cli-flash
+```
+
 ## TODO
 * write tests
 * remove bootstrap dependency 
