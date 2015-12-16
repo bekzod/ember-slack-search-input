@@ -24,7 +24,7 @@ Like search input field in slack, special keywords(modifiers) are used to filter
 ```
 
 ```hbs
-{{tag-search-input
+{{slack-search-input
   placeholder='search for objects'
   configHash=configHash
   inputValue=model.queryString 
@@ -36,18 +36,18 @@ Like search input field in slack, special keywords(modifiers) are used to filter
   focus-out=(action 'inputFocusedOut')
 }}
 ```
-There is also help popup which is displayed when user focuses input first time. The content of popup should be passed to `tag-search-input` in block form. 
+There is also help popup which is displayed when user focuses input first time. The content of popup should be passed to `slack-search-input` in block form. 
 
 ```hbs
-{{#tag-search-input as |concatToInputValue|}}
+{{#slack-search-input as |concatToInputValue|}}
   <div class="help-title">
     Search with Filters
   </div>
   <span class='help-text'>Narrow your search using filter <span onmousedown={{action concatToInputValue 'before:'}} class='modifier'>before:</span>, <span onmousedown={{action concatToInputValue 'channel:'}} class='modifier'>channel:</span> or <span onmousedown={{action concatToInputValue '@'}} class='modifier'>@</span>. Or press plus key <span onmousedown={{action concatToInputValue '+'}} class='modifier'>+</span> to get all available filters</span>
-{{/tag-search-input}}
+{{/slack-search-input}}
 ```
 
-## tag-search-input options
+## slack-search-input options
 
 #### placeholder
 Simple placeholder displayed when input has no value
