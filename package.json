@@ -1,7 +1,7 @@
 {
   "name": "ember-slack-search-input",
   "version": "0.2.2",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember Slack Search Input addon",
   "directories": {
     "doc": "doc",
     "test": "tests"
