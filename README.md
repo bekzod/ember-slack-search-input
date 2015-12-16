@@ -1,9 +1,8 @@
 # ember-slack-search-input
-Attempt to replicate slack search input field as ember addon.
+Attempt to replicate slack search input field as ember addon. 
+###[Demo](http://ember-slack-search-input.surge.sh)
 
 Like search input field in slack, special keywords(modifiers) are used to filter out the search. This modifiers are passed as form of config object with options like:
-
-###[Demo](http://ember-slack-search-input.surge.sh)
 
 ```javascript
   configHash: {
