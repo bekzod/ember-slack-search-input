@@ -30,7 +30,7 @@ Like search input field in slack, special keywords(modifiers) are used to filter
   inputValue='' 
   isPopupHidden=false
   valueChange=(action 'searchValueChange')
-  modefierAutoComplete=(action 'modefierAutoComplete')
+  modifierAutoComplete=(action 'modifierAutoComplete')
   enter=(action 'search')
   focus-in=(action 'inputFocusedIn')
   focus-out=(action 'inputFocusedOut')
@@ -64,7 +64,7 @@ can be used to hide popups
 #### valueChange(newValue)
 fired when inputValue changes 
 
-####modefierAutoComplete(newValue, modifierValue)
+####modifierAutoComplete(newValue, modifierValue)
 fired when modifier has valid value
 
 ## Modifier Types

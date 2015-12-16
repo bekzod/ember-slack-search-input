@@ -203,8 +203,8 @@ export default Ember.Component.extend({
         this.scrollBackground(this._mainInput.scrollLeft());
       }
 
-      if ((tokenType !== 'default' || model.fullText) && this.attrs.modefierAutoComplete) {
-        this.attrs.modefierAutoComplete(tokensString, sanitizeToken(token));
+      if ((tokenType !== 'default' || model.fullText) && this.attrs.modifierAutoComplete) {
+        this.attrs.modifierAutoComplete(tokensString, sanitizeToken(token));
       }
       if (this.attrs.valueChange) {
         this.attrs.valueChange(tokensString);
@@ -267,8 +267,8 @@ export default Ember.Component.extend({
             this.scrollBackground(target.scrollLeft);
           }
 
-          if (tokenType !== 'default' && this.attrs.modefierAutoComplete) {
-            this.attrs.modefierAutoComplete(tokensString, sanitizeToken(currentToken));
+          if (tokenType !== 'default' && this.attrs.modifierAutoComplete) {
+            this.attrs.modifierAutoComplete(tokensString, sanitizeToken(currentToken));
           }
           if (this.attrs.valueChange) {
             this.attrs.valueChange(tokensString);
