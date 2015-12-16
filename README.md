@@ -1,9 +1,8 @@
 # ember-slack-search-input
-Attempt to replicate slack ~search input field~ as ember addon.
+Attempt to replicate slack search input field as ember addon. 
+###[Demo](http://ember-slack-search-input.surge.sh)
 
 Like search input field in slack, special keywords(modifiers) are used to filter out the search. This modifiers are passed as form of config object with options like:
-
-(Demo)[http://ember-slack-search-input.surge.sh]
 
 ```javascript
   configHash: {
@@ -50,30 +49,28 @@ There is also help popup which is displayed when user focuses input first time. 
 
 ## tag-search-input options
 
-### placeholder
+#### placeholder
 Simple placeholder displayed when input has no value
 
-### configHash
+#### configHash
 Config object used for getting modifiers
 
-### inputValue
+#### inputValue
 Initial value of input 
 
-### isPopupHidden
+#### isPopupHidden
 can be used to hide popups 
 
-### valueChange(newValue)
+#### valueChange(newValue)
 fired when inputValue changes 
 
-###modefierAutoComplete(newValue, modifierValue)
+####modefierAutoComplete(newValue, modifierValue)
 fired when modifier has valid value
 
 ## Modifier Types
 Currently two types of modifiers are supported `list` and `date`:
-### Date
-  Date picker popup is showed when modifier is active.
-### List
-  List is simple list of possible options
+  * Date - Date picker popup is showed when modifier is active.
+  * List - List is simple list of possible options
 
 ## Deserialize Query String 
 Once you got query string, you can deserialze it to object.
