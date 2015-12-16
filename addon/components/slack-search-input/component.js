@@ -44,7 +44,7 @@ export default Ember.Component.extend({
     let type = get(this, 'currentToken.type');
     set(this, 'isPopupFocused', false);
     if (type && (type !== 'space')) {
-      return 'hint-popup/' + (type === 'modifier-list' ? 'list' : type);
+      return 'modifiers/' + (type === 'modifier-list' ? '-list' : '-' + type);
     }
   }),
 

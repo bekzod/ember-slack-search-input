@@ -1,4 +1,4 @@
-import List from '../list/component';
+import List from '../-list/component';
 import layout from './template';
 
 export default List.extend({
