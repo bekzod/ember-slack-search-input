@@ -93,15 +93,7 @@ Once you got query string, you can deserialze it to object.
 ```
 
 ##Requirements 
-Currently addon styles rely on `bootstrap 3.x.x`, if you don't have it installed you should explicitly specify to import them in `ember-cli-build.js` 
-```javascript 
-  var app = new EmberAddon(defaults, {
-    'ember-slack-search-input': {
-      importBootstrapCSS: true, // it will import glyphicons too 
-      importBootstrapJS: true, // if you want bootstrap js is (not required for addon)
-    }
-  });
-```
+Currently addon styles has hard dependency on `bootstrap 3.x.x`, bootstrap should be installed already to styles work properly.
 
 ## Installation
 You can install either with `ember install`:
