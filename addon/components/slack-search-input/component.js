@@ -40,7 +40,7 @@ export default Ember.Component.extend({
     }
   }),
 
-  popupComponent: computed('activeToken', 'activeToken.type', function() {
+  popupComponent: computed('activeToken.type', function() {
     let type = get(this, 'activeToken.type');
     set(this, 'isPopupFocused', false);
     if (type && (type !== 'space')) {
@@ -109,11 +109,11 @@ export default Ember.Component.extend({
     }
   }),
 
-  activeToken: computed('tokenIndex', 'tokens', function() {
-    return get(this, 'tokens')[get(this, 'tokenIndex')];
+  activeToken: computed('activeTokenIndex', 'tokens', function() {
+    return get(this, 'tokens')[get(this, 'activeTokenIndex')];
   }),
 
-  tokenIndex: computed('cursorLocation', 'tokens.[]', function() {
+  activeTokenIndex: computed('cursorLocation', 'tokens.[]', function() {
     let cursorLocation = get(this, 'cursorLocation');
     let sumIndex = 0;
     let token, startIndex, endIndex;
@@ -137,9 +137,9 @@ export default Ember.Component.extend({
     }
   }),
 
-  isLastTokenSelected: computed('tokenIndex', 'tokens.length', function() {
+  isLastTokenSelected: computed('activeTokenIndex', 'tokens.length', function() {
     let tokensCount = get(this, 'tokens.length');
-    return tokensCount && (tokensCount - 1) === get(this, 'tokenIndex');
+    return tokensCount && (tokensCount - 1) === get(this, 'activeTokenIndex');
   }),
 
   getTokenEndCursorPos(token) {
@@ -183,7 +183,7 @@ export default Ember.Component.extend({
       let tokenType = get(token, 'type');
       set(token, 'model', model);
       let tokens = get(this, 'tokens');
-      let isLastTokenSelected = tokens.indexOf(token) === get(this, 'tokenIndex');
+      let isLastTokenSelected = tokens.indexOf(token) === get(this, 'activeTokenIndex');
       let cursorLocation;
       if (shouldMoveCursor) {
         if (!model.modifier && isLastTokenSelected) {
