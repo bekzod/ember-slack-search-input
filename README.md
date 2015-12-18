@@ -21,6 +21,7 @@ Like search input field in slack, special keywords(modifiers) are used to filter
       type: 'date', 
       defaultHint: 'a date',
     }
+  }
 ```
 
 ```hbs
@@ -49,22 +50,22 @@ There is also help popup which is displayed when user focuses input first time. 
 
 ## slack-search-input options
 
-#### placeholder
+#### placeholder:String
 Simple placeholder displayed when input has no value
 
-#### configHash
+#### configHash:Object
 Config object used for getting modifiers
 
-#### inputValue
+#### inputValue:String
 Initial value of input 
 
-#### isPopupHidden
+#### isPopupHidden:Boolean
 can be used to hide popups 
 
-#### valueChange(newValue)
+#### valueChange(newValue:String)
 fired when inputValue changes 
 
-####modifierAutoComplete(newValue, modifierValue)
+####modifierAutoComplete(newValue:String, modifierValue:Object)
 fired when modifier has valid value
 
 ## Modifier Types
