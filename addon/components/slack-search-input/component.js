@@ -57,7 +57,7 @@ export default Ember.Component.extend({
     });
   }),
 
-  teadDown: on('willRemoveElement', function() {
+  tearDown: on('willRemoveElement', function() {
     this._mainInput.off("mousewheel DOMMouseScroll", this._mouseWheelListener);
   }),
 
