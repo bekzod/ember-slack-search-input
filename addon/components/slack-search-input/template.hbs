@@ -17,8 +17,8 @@
 {{#unless isPopupHidden}}
   {{#if popupComponent}}
     {{component popupComponent
-      token=currentToken
-      cursor=currentTokenCursor
+      token=activeToken
+      cursor=activeTokenCursor
       changeTokenModel=(action 'changeTokenModel')
       on-focus=(action (mut isPopupFocused) true)
       enterClicked=enterClicked

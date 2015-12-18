@@ -40,8 +40,8 @@ export default Ember.Component.extend({
     }
   }),
 
-  popupComponent: computed('currentToken', 'currentToken.type', function() {
-    let type = get(this, 'currentToken.type');
+  popupComponent: computed('activeToken', 'activeToken.type', function() {
+    let type = get(this, 'activeToken.type');
     set(this, 'isPopupFocused', false);
     if (type && (type !== 'space')) {
       return 'modifiers/' + (type === 'modifier-list' ? '-list' : '-' + type);
@@ -98,18 +98,18 @@ export default Ember.Component.extend({
     });
   },
 
-  currentTokenCursor: computed('cursorLocation', 'currentToken', function() {
-    let currentToken = get(this, 'currentToken');
+  activeTokenCursor: computed('cursorLocation', 'activeToken', function() {
+    let activeToken = get(this, 'activeToken');
     let cursorLocation = get(this, 'cursorLocation');
-    if (currentToken) {
-      let tokenCursorEnd = this.getTokenEndCursorPos(currentToken);
-      return cursorLocation - (tokenCursorEnd - get(currentToken, 'length'));
+    if (activeToken) {
+      let tokenCursorEnd = this.getTokenEndCursorPos(activeToken);
+      return cursorLocation - (tokenCursorEnd - get(activeToken, 'length'));
     } else {
       return -1;
     }
   }),
 
-  currentToken: computed('tokenIndex', 'tokens', function() {
+  activeToken: computed('tokenIndex', 'tokens', function() {
     return get(this, 'tokens')[get(this, 'tokenIndex')];
   }),
 
@@ -131,9 +131,9 @@ export default Ember.Component.extend({
     return -1;
   }),
 
-  hintValue: computed('isLastTokenSelected', 'currentToken.hint', function() {
+  hintValue: computed('isLastTokenSelected', 'activeToken.hint', function() {
     if (get(this, 'isLastTokenSelected')) {
-      return get(this, 'currentToken.hint');
+      return get(this, 'activeToken.hint');
     }
   }),
 
@@ -244,13 +244,13 @@ export default Ember.Component.extend({
         this.toggleProperty('downClicked');
       } else if (keyCode === KEYS.TAB) {
         e.preventDefault();
-        let currentToken = get(this, 'currentToken');
-        let tokenType = get(currentToken, 'type'); // token type before autocomplete
-        if (currentToken.autoComplete()) {
-          let hasVal = get(currentToken, 'value');
+        let activeToken = get(this, 'activeToken');
+        let tokenType = get(activeToken, 'type'); // token type before autocomplete
+        if (activeToken.autoComplete()) {
+          let hasVal = get(activeToken, 'value');
           let tokens = get(this, 'tokens');
           let isLastTokenSelected = get(this, 'isLastTokenSelected');
-          let cursorLocation = this.getTokenEndCursorPos(currentToken);
+          let cursorLocation = this.getTokenEndCursorPos(activeToken);
           if (hasVal) {
             if (isLastTokenSelected) {
               tokens.pushObject(Token.create({ fullText: ' ' }));
@@ -268,12 +268,12 @@ export default Ember.Component.extend({
           }
 
           if (tokenType !== 'default' && this.attrs.modifierAutoComplete) {
-            this.attrs.modifierAutoComplete(tokensString, sanitizeToken(currentToken));
+            this.attrs.modifierAutoComplete(tokensString, sanitizeToken(activeToken));
           }
           if (this.attrs.valueChange) {
             this.attrs.valueChange(tokensString);
           }
-        } else if (get(currentToken, 'type') !== 'date') {
+        } else if (get(activeToken, 'type') !== 'date') {
           this.toggleProperty('downClicked');
         }
       } else {

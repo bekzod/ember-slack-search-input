@@ -8,7 +8,7 @@ let App;
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
-   customEvents: {
+  customEvents: {
     paste: "paste",
     cut: "cut"
   },
