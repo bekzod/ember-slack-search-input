@@ -34,7 +34,7 @@ export default Ember.Component.extend({
   cursorLocationType: computed('cursor', 'token.length', function() {
     let cursor = get(this, 'cursor');
     let keyLength = get(this, 'token.modifier.length');
-    if (cursor > keyLength) {
+    if (cursor >= keyLength) {
       if (cursor < (keyLength + 5)) {
         return 'year';
       } else if (cursor < (keyLength + 8)) {
@@ -54,7 +54,7 @@ export default Ember.Component.extend({
     let cursorLocationType = get(this, 'cursorLocationType');
     if (date && cursorLocationType) {
       date.add(1, cursorLocationType);
-      run.next(this, function() {
+      run.once(this, function() {
         this.attrs.changeTokenModel(get(this, 'token'), date);
         this.propertyDidChange('token.model');
       });
@@ -66,7 +66,7 @@ export default Ember.Component.extend({
     let cursorLocationType = get(this, 'cursorLocationType');
     if (date && cursorLocationType) {
       date.subtract(1, cursorLocationType);
-      run.next(this, function() {
+      run.once(this, function() {
         this.attrs.changeTokenModel(get(this, 'token'), date);
         this.propertyDidChange('token.model');
       });
