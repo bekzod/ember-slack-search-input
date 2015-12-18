@@ -1,4 +1,5 @@
-# ember-slack-search-input
+# ember-slack-search-input [![Ember Observer Score](http://emberobserver.com/badges/ember-slack-search-input.svg)](http://emberobserver.com/addons/ember-slack-search-input) [![npm version](https://badge.fury.io/js/ember-slack-search-input.svg)](https://badge.fury.io/js/ember-slack-search-input) [![travis status](https://travis-ci.org/bekzod/ember-slack-search-input.svg)](https://travis-ci.org/bekzod/ember-slack-search-input.svg)
+
 Attempt to replicate slack search input field as ember addon. 
 ###[Demo](http://ember-slack-search-input.surge.sh)
 
