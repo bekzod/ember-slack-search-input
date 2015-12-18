@@ -45,7 +45,7 @@ test('modifiers highlighted', function(assert) {
 
   this.set('inputValue', 'before:2000-12-12');
   assert.equal(this.$('input').val(), 'before:2000-12-12');
-  assert.ok(!this.$('.background-container .modifier').hasClass('incomplete'));
+  assert.notOk(this.$('.background-container .modifier').hasClass('incomplete'));
 
   this.set('inputValue', 'category:');
   assert.equal(this.$('input').val(), 'category:');
@@ -53,6 +53,6 @@ test('modifiers highlighted', function(assert) {
 
   this.set('inputValue', 'category:animal');
   assert.equal(this.$('input').val(), 'category:animal');
-  assert.ok(!this.$('.background-container .modifier').hasClass('incomplete'));
+  assert.notOk(this.$('.background-container .modifier').hasClass('incomplete'));
 
 });
