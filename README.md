@@ -95,6 +95,16 @@ Once you got query string, you can deserialze it to object.
 
 ##Requirements 
 Currently addon styles has hard dependency on `bootstrap 3.x.x`, bootstrap should be installed already to styles work properly.
+For input field to react properly to `paste/cut` events, they should be added to `customEvents` hash in `app.js`.
+```javascript
+App = Ember.Application.extend({
+  customEvents: {
+    paste: "paste",
+    cut: "cut"
+  },
+  ...
+});
+```
 
 ## Installation
 You can install either with `ember install`:
