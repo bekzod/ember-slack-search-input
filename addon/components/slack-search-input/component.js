@@ -175,7 +175,7 @@ export default Ember.Component.extend({
       let newStr = get(this, 'inputValue') + text;
       set(this, 'inputValue', newStr);
       this._mainInput.focus();
-      set(this, 'cursorLocation', newStr.length - 1);
+      set(this, 'cursorLocation', newStr.length);
       return false;
     },
 
