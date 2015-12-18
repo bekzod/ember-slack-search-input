@@ -12,7 +12,7 @@
   focus-in=(action 'onFocusIn')
   key-down=(action 'onKeyDown') }}
 
-<div class="background-container">{{#each tokens as |token|}}{{#if (not (array-contains tokenTypes token.type))}}{{#if token.isValueValid}}<span class='modifier'>{{token.modifier}}{{token.value}}</span>{{else}}<span class='modifier incomplete'>{{token.modifier}}</span>{{token.value}}{{/if}}{{else}}{{token.fullText}}{{/if}}{{/each}}<span class="hint-value">{{hintValue}}</span></div>
+<div class="background-container">{{#each tokens as |token|}}{{#unless (array-contains excludedTokenTypes token.type)}}{{#if token.isValueValid}}<span class='modifier'>{{token.modifier}}{{token.value}}</span>{{else}}<span class='modifier incomplete'>{{token.modifier}}</span>{{token.value}}{{/if}}{{else}}{{token.fullText}}{{/unless}}{{/each}}<span class="hint-value">{{hintValue}}</span></div>
 
 {{#unless isPopupHidden}}
   {{#if popupComponent}}

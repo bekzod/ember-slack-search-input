@@ -28,7 +28,7 @@ export default Ember.Component.extend({
     return prepareConig(get(this, 'configHash'));
   }),
 
-  tokenTypes: ['default', 'modifier-list', 'space'],
+  excludedTokenTypes: ['default', 'modifier-list', 'space'],
   proxyValue: '',
   inputValue: computed({
     set(key, val) {
