@@ -84,12 +84,12 @@ Once you got query string, you can deserialze it to object.
     let queryString = get(this, 'queryString');
     console.log(queryString) // `before:2000-23-23 lorem`
     let modifiers = deserializeQueryString(queryString);
-    let before = modifiers['before:'] // array of values
-    let { model, fullText, modifier, value } = before;
-    console.log(model) // moment date
-    console.log(fullText) // before:2000-23-23
-    console.log(modifier) // before:
-    console.log(value) // 2000-23-23
+    let before = modifiers['before:'];
+    let { model, fullText, modifier, value } = before[0]; //first occurance of `before:`
+    console.log(model); // moment date
+    console.log(fullText); // before:2000-23-23
+    console.log(modifier); // before:
+    console.log(value); // 2000-23-23
   }
 ```
 
