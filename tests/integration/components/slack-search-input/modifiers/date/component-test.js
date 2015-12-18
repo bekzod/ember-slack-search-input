@@ -6,11 +6,9 @@ moduleForComponent('slack-search-input/modifiers/-date', 'Integration | Componen
 });
 
 test('it renders', function(assert) {
+  this.render(hbs`
+    {{slack-search-input/modifiers/-date}}
+  `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-
-  this.render(hbs`{{slack-search-input/modifiers/-date}}`);
-
-  assert.equal(this.$().text().trim(), '');
+  assert.ok(this.$('.datetimepicker-container > div').hasClass('bootstrap-datetimepicker-widget'));
 });

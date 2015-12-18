@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import DateSource from './components/modifiers/-date/adapter';
-import ListSource from './components/modifiers/-list/adapter';
-import DefaultSource from './components/modifiers/-default/adapter';
+import DateSource from './components/slack-search-input/modifiers/-date/adapter';
+import ListSource from './components/slack-search-input/modifiers/-list/adapter';
+import DefaultSource from './components/slack-search-input/modifiers/-default/adapter';
 
 const { computed, get, set } = Ember;
 

@@ -74,7 +74,9 @@ export default Ember.Component.extend({
   }),
 
   listGrouped: computed('token.hints', function() {
-    let list = get(this, 'token.hints')
+    let hints = get(this, 'token.hints');
+    if (!hints) { return []; }
+    let list = hints
       .reduce(function (sum, listItem) {
         let section = listItem.section;
         if (section) {

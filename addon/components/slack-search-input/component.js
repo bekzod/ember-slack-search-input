@@ -44,7 +44,7 @@ export default Ember.Component.extend({
     let type = get(this, 'activeToken.type');
     set(this, 'isPopupFocused', false);
     if (type && (type !== 'space')) {
-      return 'modifiers/' + (type === 'modifier-list' ? '-list' : '-' + type);
+      return 'slack-search-input/modifiers/' + (type === 'modifier-list' ? '-list' : '-' + type);
     }
   }),
 
