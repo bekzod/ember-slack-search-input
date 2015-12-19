@@ -11,6 +11,7 @@ export default Ember.Component.extend({
   cursorLocation: -1,
   // used to pass event to child components
   enterClicked: false,
+  maxlength: 250,
   upClicked: false,
   downClicked: false,
   isPopupHidden: false,

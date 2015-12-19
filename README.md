@@ -31,6 +31,7 @@ Like search input field in slack, special keywords(modifiers) are used to filter
   configHash=configHash
   inputValue='' 
   isPopupHidden=false
+  maxlength=250
   valueChange=(action 'searchValueChange')
   modifierAutoComplete=(action 'modifierAutoComplete')
   enter=(action 'search')
@@ -61,13 +62,16 @@ Config object used for getting modifiers
 Initial value of input 
 
 #### isPopupHidden:Boolean
-can be used to hide popups 
+Can be used to hide popups 
+
+#### maxlength:Number
+Max character length of input
 
 #### valueChange(newValue:String)
-fired when inputValue changes 
+Fired when inputValue changes 
 
 ####modifierAutoComplete(newValue:String, modifierValue:Object)
-fired when modifier has valid value
+Fired when modifier has valid value
 
 ## Modifier Types
 Currently two types of modifiers are supported `list` and `date`:
