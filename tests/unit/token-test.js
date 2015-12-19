@@ -1,4 +1,3 @@
-// import Ember from 'ember';
 import Token from 'ember-slack-search-input/token';
 import { prepareConig } from 'ember-slack-search-input/util';
 import { module, test } from 'qunit';
