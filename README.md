@@ -127,6 +127,7 @@ ember install:addon ember-slack-search-input
 ```
 
 ## TODO
-* write tests
-* remove bootstrap dependency 
+* write more tests
 * add more modifier types
+* remove bootstrap dependency 
+
