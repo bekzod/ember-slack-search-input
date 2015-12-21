@@ -38,7 +38,11 @@
     "ember-try": "~0.0.8"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "tag",
+    "search",
+    "input",
+    "slack input"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
