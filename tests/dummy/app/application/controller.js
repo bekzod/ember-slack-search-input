@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
     "channel:": {
       type: 'list',
       defaultHint: 'type',
-      sectionTitle: 'Action Types',
+      sectionTitle: 'Channels',
       content: [
         {value: 'ember', label: 'ember'},
         {value: 'jobs', label: 'jobs'},
