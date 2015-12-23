@@ -1,6 +1,6 @@
 {
   "name": "ember-slack-search-input",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Ember Slack Search Input addon",
   "directories": {
     "doc": "doc",
