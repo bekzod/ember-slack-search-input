@@ -14,7 +14,7 @@ export default Ember.Component.extend({
       let currentIndex = get(this, 'currentIndex');
       if (currentIndex === -1 || !this.element) { return; }
       let $listItem = this.$('li').eq(currentIndex);
-      let $list = $listItem.parent('.list');
+      let $list = $listItem.parent('.slack-search-input-list');
 
       let scroll = $list.scrollTop();
       let listHeight = $list.height();
