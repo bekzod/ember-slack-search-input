@@ -232,7 +232,7 @@ export default Ember.Component.extend({
         e.preventDefault();
         this.toggleProperty('enterClicked');
         if (!get(this, 'isPopupFocused') && this.attrs.enter) {
-          this.attrs.enter();
+          this.attrs.enter(target.value);
         }
       } else if (keyCode === KEYS.ESC) {
         this._mainInput.blur();
