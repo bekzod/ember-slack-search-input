@@ -10,7 +10,8 @@
   cut=(action 'inputCut')
   focus-out=(action 'onFocusOut')
   focus-in=(action 'onFocusIn')
-  key-down=(action 'onKeyDown') }}
+  key-down=(action 'onKeyDown')
+  disabled=disabled }}
 
 <div class="background-container">{{#each tokens as |token|}}{{#unless (array-contains excludedTokenTypes token.type)}}{{#if token.isValueValid}}<span class='modifier'>{{token.modifier}}{{token.value}}</span>{{else}}<span class='modifier incomplete'>{{token.modifier}}</span>{{token.value}}{{/if}}{{else}}{{token.fullText}}{{/unless}}{{/each}}<span class="hint-value">{{hintValue}}</span></div>
 
