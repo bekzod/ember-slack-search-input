@@ -42,7 +42,7 @@ export function getDefaultContent(configHash, modifiersList) {
   for (key in configHash) {
     val = configHash[key];
     if (val.type === 'list' && val.content) {
-      list = val.content.map(function(item) {
+      list = val.content.map(function(item) { // jshint ignore:line
         return {
           label: item.label,
           value: key + item.value,
