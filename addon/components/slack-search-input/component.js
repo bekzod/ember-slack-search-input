@@ -207,9 +207,8 @@ export default Ember.Component.extend({
       if ((tokenType !== 'default' || model.fullText) && this.attrs.modifierAutoComplete) {
         this.attrs.modifierAutoComplete(tokensString, sanitizeToken(token));
       }
-      if (this.attrs.valueChange) {
-        this.attrs.valueChange(tokensString);
-      }
+
+      this._sendValueNotification(tokensString);
     },
 
     onFocusIn() {
@@ -271,21 +270,15 @@ export default Ember.Component.extend({
           if (tokenType !== 'default' && this.attrs.modifierAutoComplete) {
             this.attrs.modifierAutoComplete(tokensString, sanitizeToken(activeToken));
           }
-          if (this.attrs.valueChange) {
-            this.attrs.valueChange(tokensString);
-          }
+
+          this._sendValueNotification(tokensString);
         } else if (get(activeToken, 'type') !== 'date') {
           this.toggleProperty('downClicked');
         }
       } else {
         run.next(this, function() {
           let val = target.value;
-          if (val !== get(this, 'inputValue')) {
-            set(this, 'inputValue', val);
-            if (this.attrs.valueChange) {
-              this.attrs.valueChange(val);
-            }
-          }
+          this._sendValueNotification(val);
           set(this, 'cursorLocation', target.selectionStart);
           this.scrollBackground(target.scrollLeft);
           set(this, 'firstTimeFocus', false);
@@ -297,6 +290,14 @@ export default Ember.Component.extend({
       this.scrollBackground(target.scrollLeft);
       set(this, 'cursorLocation', target.selectionStart);
     }
-  }
+  },
 
+  _sendValueNotification(value) {
+    if (value !== get(this, 'inputValue')) {
+      set(this, 'inputValue', value);
+      if (this.attrs.valueChange) {
+        this.attrs.valueChange(value);
+      }
+    }
+  }
 });
