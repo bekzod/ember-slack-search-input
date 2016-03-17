@@ -236,7 +236,14 @@ export default Ember.Component.extend({
           this.attrs.enter();
         }
       } else if (keyCode === KEYS.ESC) {
-        this._mainInput.blur();
+        e.preventDefault();
+        if (this.attrs.escape) {
+          if (this.attrs.escape() === true) {
+            this._mainInput.blur();
+          }
+        } else {
+          this._mainInput.blur();
+        }
       } else if (keyCode === KEYS.UP) {
         e.preventDefault();
         this.toggleProperty('upClicked');
