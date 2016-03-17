@@ -238,7 +238,9 @@ export default Ember.Component.extend({
       } else if (keyCode === KEYS.ESC) {
         e.preventDefault();
         if (this.attrs.escape) {
-          this.attrs.escape();
+          if (this.attrs.escape() === true) {
+            this._mainInput.blur();
+          }
         } else {
           this._mainInput.blur();
         }
