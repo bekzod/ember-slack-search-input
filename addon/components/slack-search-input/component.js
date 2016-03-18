@@ -34,6 +34,7 @@ export default Ember.Component.extend({
   inputValue: computed({
     set(key, val) {
       set(this, 'proxyValue', val);
+      set(this, 'cursorLocation', val.length);
       return val;
     },
     get() {

@@ -1,5 +1,7 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { KEYS } from 'ember-slack-search-input/util';
 
 moduleForComponent('slack-search-input', 'Integration | Component | slack search input', {
   integration: true
@@ -55,4 +57,19 @@ test('modifiers highlighted', function(assert) {
   assert.equal(this.$('input').val(), 'category:animal');
   assert.notOk(this.$('.background-container .modifier').hasClass('incomplete'));
 
+});
+
+test('inputValue is correct and ends in space after an autocomplete', function(assert) {
+  this.set('inputValue', '');
+  this.set('configHash', configHash);
+  this.render(hbs`
+    {{slack-search-input
+      configHash=configHash
+      inputValue=inputValue}}
+  `);
+
+  this.set('inputValue', 'category:mi');
+  this.$('input').trigger(Ember.$.Event('keydown', { keyCode: KEYS.TAB }));
+  this.$('input').trigger(Ember.$.Event('keydown', { keyCode: KEYS.ENTER }));
+  assert.equal(this.get('inputValue'), 'category:mineral ');
 });
