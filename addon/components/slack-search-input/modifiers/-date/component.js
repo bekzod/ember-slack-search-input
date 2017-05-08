@@ -83,7 +83,9 @@ export default Ember.Component.extend({
   },
 
   tearDown: on('willDestroyElement', function() {
-    this._picker.destroy();
+    if (this._picker) {
+      this._picker.destroy();
+    }
   })
 
 });
