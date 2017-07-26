@@ -51,7 +51,9 @@
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-sass": "6.1.3",
     "ember-helpers-array-contains": "^1.0.0",
-    "ember-truth-helpers": "^1.2.0"
+    "ember-truth-helpers": "^1.2.0",
+    "moment": "~2.12.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",

@@ -1,24 +1,36 @@
 /* jshint node: true */
 'use strict';
 var path = require('path');
+var resolve = require('resolve');
+var Funnel = require('broccoli-funnel');
+var mergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
   name: 'ember-slack-search-input',
+
   included: function(app) {
-    this._super.included(app);
+    this._super.included.apply(this, arguments);
+    app.import('vendor/moment/moment.js');
+    app.import('vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css');
+    app.import('vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js');
+  },
 
-    var bowerDir = app.bowerDirectory;
-    var options = app.options['ember-slack-search-input'] || {};
+  treeForVendor: function(tree) {
+    var trees = [];
+    var moment = new Funnel(this.pathBase('moment'), {
+      destDir: 'moment'
+    });
+    var datepicker = new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
+      destDir: 'eonasdan-bootstrap-datetimepicker'
+    });
+    trees = trees.concat([moment, datepicker]);
+    if (tree) {
+      trees.push(tree);
+    }
+    return mergeTrees(trees);
+  },
 
-    app.import(path.join(bowerDir, 'moment', 'moment.js'));
-    app.import(path.join(
-      bowerDir,
-      'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
-    ));
-
-    app.import(path.join(
-      bowerDir,
-      'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
-    ));
-  }
+  pathBase: function(packageName) {
+    return path.dirname(resolve.sync(packageName + '/package.json', { basedir: __dirname }));
+  },
 };
