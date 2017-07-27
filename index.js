@@ -4,6 +4,7 @@ var path = require('path');
 var resolve = require('resolve');
 var Funnel = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
+var fastbootTransform = require('fastboot-transform');
 
 module.exports = {
   name: 'ember-slack-search-input',
@@ -17,12 +18,12 @@ module.exports = {
 
   treeForVendor: function(tree) {
     var trees = [];
-    var moment = new Funnel(this.pathBase('moment'), {
+    var moment = fastbootTransform(new Funnel(this.pathBase('moment'), {
       destDir: 'moment'
-    });
-    var datepicker = new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
+    }));
+    var datepicker = fastbootTransform(new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
       destDir: 'eonasdan-bootstrap-datetimepicker'
-    });
+    }));
     trees = trees.concat([moment, datepicker]);
     if (tree) {
       trees.push(tree);
