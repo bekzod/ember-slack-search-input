@@ -23,7 +23,7 @@ export default {
       return moment().startOf('day').subtract(1, 'day');
     } else if (val === 'today') {
       return moment().startOf('day');
-    } else if (MONTHS.contains(val)) {
+    } else if (MONTHS.includes(val)) {
       return moment().month(val).startOf('month');
     } else if (DATE_FORMAT_FULL.test(val)) {
       return moment(val, 'YYYY-MM-DD:HH-mm');
@@ -35,7 +35,7 @@ export default {
   validate(string) {
     return string === 'yesterday' ||
       string === 'today' ||
-      MONTHS.contains(string) ||
+      MONTHS.includes(string) ||
       DATE_FORMAT.test(string) && moment(string, 'YYYY-MM-DD').isValid() ||
       DATE_FORMAT_FULL.test(string) && moment(string, 'YYYY-MM-DD:HH-mm').isValid();
   },
