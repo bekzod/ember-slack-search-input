@@ -54,7 +54,8 @@
     "ember-runtime-enumerable-includes-polyfill": "^2.0.0",
     "ember-truth-helpers": "^1.2.0",
     "moment": "~2.12.0",
-    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "fastboot-transform": "^0.1.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
