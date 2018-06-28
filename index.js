@@ -1,27 +1,27 @@
 /* jshint node: true */
 'use strict';
-var path = require('path');
-var resolve = require('resolve');
-var Funnel = require('broccoli-funnel');
-var mergeTrees = require('broccoli-merge-trees');
-var fastbootTransform = require('fastboot-transform');
+const path = require('path');
+const resolve = require('resolve');
+const Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
+const fastbootTransform = require('fastboot-transform');
 
 module.exports = {
   name: 'ember-slack-search-input',
 
-  included: function(app) {
+  included(app) {
     this._super.included.apply(this, arguments);
     app.import('vendor/moment/moment.js');
     app.import('vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css');
     app.import('vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js');
   },
 
-  treeForVendor: function(tree) {
-    var trees = [];
-    var moment = fastbootTransform(new Funnel(this.pathBase('moment'), {
+  treeForVendor(tree) {
+    let trees = [];
+    let moment = fastbootTransform(new Funnel(this.pathBase('moment'), {
       destDir: 'moment'
     }));
-    var datepicker = fastbootTransform(new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
+    let datepicker = fastbootTransform(new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
       destDir: 'eonasdan-bootstrap-datetimepicker'
     }));
     trees = trees.concat([moment, datepicker]);
@@ -31,7 +31,7 @@ module.exports = {
     return mergeTrees(trees);
   },
 
-  pathBase: function(packageName) {
+  pathBase(packageName) {
     return path.dirname(resolve.sync(packageName + '/package.json', { basedir: __dirname }));
   },
 };

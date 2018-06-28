@@ -1,13 +1,13 @@
 /*jshint node:true*/
 /* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-var path = require('path');
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+const path = require('path');
 
 module.exports = function(defaults) {
-  var app = new EmberAddon(defaults, {
+  const app = new EmberAddon(defaults, {
   });
 
-  var bootstrapPath = path.join('bower_components','/bootstrap/dist/');
+  const bootstrapPath = path.join('bower_components','/bootstrap/dist/');
   app.import(path.join(bootstrapPath, 'css/bootstrap.css'));
   app.import(path.join(bootstrapPath, 'css/bootstrap.css.map'), { destDir: 'assets' });
 

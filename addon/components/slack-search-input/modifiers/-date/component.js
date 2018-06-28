@@ -56,7 +56,7 @@ export default Ember.Component.extend({
       date.add(1, cursorLocationType);
       run.once(this, function() {
         this.attrs.changeTokenModel(get(this, 'token'), date);
-        this.propertyDidChange('token.model');
+        this.notifyPropertyChange('token.model');
       });
     }
   }),
@@ -68,7 +68,7 @@ export default Ember.Component.extend({
       date.subtract(1, cursorLocationType);
       run.once(this, function() {
         this.attrs.changeTokenModel(get(this, 'token'), date);
-        this.propertyDidChange('token.model');
+        this.notifyPropertyChange('token.model');
       });
     }
   }),
