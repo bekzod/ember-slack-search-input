@@ -17,18 +17,14 @@ module.exports = {
   },
 
   treeForVendor(tree) {
-    let trees = [];
     let moment = fastbootTransform(new Funnel(this.pathBase('moment'), {
       destDir: 'moment'
     }));
     let datepicker = fastbootTransform(new Funnel(this.pathBase('eonasdan-bootstrap-datetimepicker'), {
       destDir: 'eonasdan-bootstrap-datetimepicker'
     }));
-    trees = trees.concat([moment, datepicker]);
-    if (tree) {
-      trees.push(tree);
-    }
-    return mergeTrees(trees);
+
+    return mergeTrees([tree, moment, datepicker]);
   },
 
   pathBase(packageName) {

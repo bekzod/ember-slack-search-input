@@ -1,6 +1,0 @@
-{
-  "name": "ember-slack-search-input",
-  "dependencies": {
-    "bootstrap": "~3.3.6"
-  }
-}
