@@ -115,18 +115,9 @@ App = Ember.Application.extend({
 ```
 
 ## Installation
-You can install either with `ember install`:
-
-For Ember CLI >= `0.2.3`:
 
 ```shell
 ember install ember-slack-search-input
-```
-
-For Ember CLI < `0.2.3`:
-
-```shell
-ember install:addon ember-slack-search-input
 ```
 
 ## TODO

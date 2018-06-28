@@ -1,11 +1,17 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { run } from '@ember/runloop';
+import { get, computed, set } from '@ember/object';
 import Token from '../../token';
 import layout from './template';
-import { setCursor, KEYS, tokenize, prepareConig, sanitizeToken } from '../../util';
+import {
+  setCursor,
+  KEYS,
+  tokenize,
+  prepareConig,
+  sanitizeToken
+} from '../../util';
 
-const { set, on, run, computed, get } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   classNames: ['slack-search-input'],
   cursorLocation: -1,
@@ -49,18 +55,20 @@ export default Ember.Component.extend({
     }
   }),
 
-  onInitComponent: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super(...arguments);
     run.schedule('afterRender', this, function() {
       this._mainInput = this.$('.main-input');
       this._background = this.$('.background-container');
       this._mouseWheelListener = run.bind(this, 'onMouseMove');
       this._mainInput.on("mousewheel DOMMouseScroll", this._mouseWheelListener); // maybe to do with custom events ?
     });
-  }),
+  },
 
-  tearDown: on('willRemoveElement', function() {
+  willRemoveElement() {
     this._mainInput.off("mousewheel DOMMouseScroll", this._mouseWheelListener);
-  }),
+    this._super(...arguments);
+  },
 
   onMouseMove(e) {
     this.scrollBackground(e.target.scrollLeft);

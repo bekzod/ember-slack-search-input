@@ -1,13 +1,14 @@
-import Ember from 'ember';
+import { bool } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed, observer, set, get } from '@ember/object';
+import { run } from '@ember/runloop';
 import layout from './template';
 
-const { get, set, observer, computed, run } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   currentIndex: -1,
   classNames: ['hint-menu-container'],
-  isVisible: computed.bool('token.hints.length'),
+  isVisible: bool('token.hints.length'),
 
   correctScroll: observer('currentIndex', function() {
     run.scheduleOnce('afterRender', this, function() {

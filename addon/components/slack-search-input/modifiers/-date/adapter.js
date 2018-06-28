@@ -4,7 +4,7 @@ import { getMatch } from '../../../../util';
 const MONTHS = moment.months().invoke('toLowerCase');
 const ALLOWED_VALUES = ['yesterday', 'today'].concat(MONTHS);
 const DATE_FORMAT = /^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$/;
-const DATE_FORMAT_FULL = /^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\:[0-9]{1,2}-[0-9]{1,2}$/;
+const DATE_FORMAT_FULL = /^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}:[0-9]{1,2}-[0-9]{1,2}$/;
 
 export default {
   defaultHint: 'a date',

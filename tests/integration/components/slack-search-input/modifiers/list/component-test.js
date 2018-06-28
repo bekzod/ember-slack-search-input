@@ -41,14 +41,14 @@ test('list displayed', function(assert) {
   `);
 
   assert.deepEqual(
-    this.$('li b').map((i, el)=> $(el).text().trim()).get(),
+    this.$('li b').map((i, el)=> this.$(el).text().trim()).get(),
     ['plant', 'animal', 'mineral']
   );
 
   this.set('token.value', 'min');
 
   assert.deepEqual(
-    this.$('li b').map((i, el)=> $(el).text().trim()).get(),
+    this.$('li b').map((i, el)=> this.$(el).text().trim()).get(),
     ['mineral']
   );
 });
