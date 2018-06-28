@@ -1,15 +1,16 @@
-import Ember from 'ember';
+import { reads } from '@ember/object/computed';
+import EmberObject, { set, get, computed } from '@ember/object';
 import DateSource from './components/slack-search-input/modifiers/-date/adapter';
 import ListSource from './components/slack-search-input/modifiers/-list/adapter';
 import DefaultSource from './components/slack-search-input/modifiers/-default/adapter';
 
-const { computed, get, set } = Ember;
-
-export default Ember.Object.extend({
+export default EmberObject.extend({
   modifier: '',
   value: '',
 
-  configHash: {},
+  configHash: computed(function() {
+    return {};
+  }),
 
   config: computed('configHash', 'modifier', 'value', function() {
     let configHash = get(this, 'configHash');
@@ -27,8 +28,8 @@ export default Ember.Object.extend({
     return get(this, 'config.type') || 'space';
   }),
 
-  sectionTitle: computed.reads('config.sectionTitle'),
-  content: computed.reads('config.content'),
+  sectionTitle: reads('config.sectionTitle'),
+  content: reads('config.content'),
   adapter: computed('type', function() {
     const type = get(this, 'type');
     if (type === 'list' || type === 'modifier-list') {
@@ -70,9 +71,9 @@ export default Ember.Object.extend({
     }
   }),
 
-  length: computed.reads('fullText.length'),
+  length: reads('fullText.length'),
 
-  firstHint: computed.reads('hints.firstObject'),
+  firstHint: reads('hints.firstObject'),
 
   subHint: computed('value', 'adapter', 'firstHint', function() {
     let value = get(this, 'value');

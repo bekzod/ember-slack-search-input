@@ -44,12 +44,12 @@ test('it renders', function(assert) {
   `);
 
   assert.deepEqual(
-    this.$('.header-label').map((index, el)=> $(el).text().trim()).get(),
+    this.$('.header-label').map((index, el)=> this.$(el).text().trim()).get(),
     ['modifiers', 'category']
   );
 
   assert.deepEqual(
-    this.$('.slack-search-input-list').map((index, el)=> $(el).children().length).get(),
+    this.$('.slack-search-input-list').map((index, el)=> this.$(el).children().length).get(),
     [2, 3]
   );
 });

@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { get, getProperties } from '@ember/object';
 import Token from './token';
-
-const { getProperties, get } = Ember;
 
 export const KEYS = {
   ESC: 27,

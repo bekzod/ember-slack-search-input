@@ -1,15 +1,16 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { run } from '@ember/runloop';
+import { computed, observer, get } from '@ember/object';
 import layout from './template';
 
-const { get, observer, on, run, computed } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['hint-menu-container'],
   layout: layout,
 
   cursor: -1,
 
-  initComponent: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super(...arguments);
     run.schedule('afterRender', this, function() {
       let el = this.$('.datetimepicker-container')
         .datetimepicker({
@@ -21,7 +22,7 @@ export default Ember.Component.extend({
         .on('dp.change', run.bind(this, 'onDateChange'));
         this._picker = el.data("DateTimePicker");
     });
-  }),
+  },
 
   setPickerDate: observer('token.model', function() {
     run.schedule('afterRender', this, function() {
@@ -82,10 +83,11 @@ export default Ember.Component.extend({
     }
   },
 
-  tearDown: on('willDestroyElement', function() {
+  willDestroyElement() {
+    this._super(...arguments);
     if (this._picker) {
       this._picker.destroy();
     }
-  })
+  }
 
 });
