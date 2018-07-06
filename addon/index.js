@@ -1,1 +1,1 @@
-export { default } from './util';
+export { deserializeQueryString } from './util';
