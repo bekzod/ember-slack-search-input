@@ -24,7 +24,7 @@ module.exports = {
       destDir: 'eonasdan-bootstrap-datetimepicker'
     }));
 
-    return mergeTrees([tree, moment, datepicker]);
+    return mergeTrees(tree ? [tree, moment, datepicker] : [moment, datepicker]);
   },
 
   pathBase(packageName) {
