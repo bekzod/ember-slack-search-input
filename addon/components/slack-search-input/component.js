@@ -167,6 +167,9 @@ export default Component.extend({
     inputPaste({ target }) {
       run.next(this, function() {
         set(this, 'inputValue', target.value);
+        if (this.attrs.valueChange) {
+          this.attrs.valueChange(target.value);
+        }
         set(this, 'cursorLocation', target.selectionStart);
         this.scrollBackground(target.scrollLeft);
       });
@@ -175,6 +178,9 @@ export default Component.extend({
     inputCut({ target }) {
       run.next(this, function() {
         set(this, 'inputValue', target.value);
+        if (this.attrs.valueChange) {
+          this.attrs.valueChange(target.value);
+        }
         set(this, 'cursorLocation', target.selectionStart);
         this.scrollBackground(target.scrollLeft);
       });
